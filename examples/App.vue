@@ -1,12 +1,12 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import { onMounted } from '@vue/runtime-core';
-  import { generate } from 'ued-xxxxxxxxx'
+  // import { generate } from 'ued-xxxxxxxxx'
 
-  // import  { generate } from '../src'
+  import  { generate } from '../src'
 
   onMounted(() => {
-    generate()
+    generate('#5068ca', {colorArray : true, dark: false })
   })
 
   // const primaryColor = ref<string>('#099dfd');
