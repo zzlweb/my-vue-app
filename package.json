@@ -1,0 +1,62 @@
+{
+  "name": "ued-xxxxxxxxx",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "keywords": [
+    "color",
+    "colors",
+    "generate",
+    "hot"
+  ],
+  "description": "An awesome theme color generation scheme.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "main": "dist/ued-color.umd.js",
+  "module": "dist/ued-color.es.js",
+  "browser": "dist/ued-color.js",
+  "typings": "typings/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/ued-color.es.js",
+      "require": "./dist/ued-color.umd.js"
+    }
+  },
+  "files": [
+    "dist",
+    "typings"
+  ],
+  "dependencies": {
+    "color": "^4.2.3",
+    "tinycolor2": "^1.4.2",
+    "ued-xxxxxxxxx": "^0.1.0"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/color": "^3.0.6",
+    "@types/node": "^20.12.5",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "@vue/tsconfig": "^0.5.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "javascript-obfuscator": "^4.1.0",
+    "npm-run-all2": "^6.1.2",
+    "prettier": "^3.2.5",
+    "rollup-plugin-obfuscator": "^1.1.0",
+    "typescript": "~5.4.0",
+    "vite": "^5.2.8",
+    "vue": "^3.4.21",
+    "vue-tsc": "^2.0.11"
+  }
+}
