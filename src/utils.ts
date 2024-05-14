@@ -26,9 +26,28 @@ export const getColorString = function(color:any, format:string) {
   return color[innerFormat]().round().string();
 }
 
-export const cubicBezier = ( t:number, p0 = 0, p1 = 0.5, p2 = 0.5, p3 = 1) => {  
-    return Math.pow(1 - t, 3) * p0 +   
-           3 * Math.pow(1 - t, 2) * t * p1 +   
-           3 * (1 - t) * Math.pow(t, 2) * p2 +   
-           Math.pow(t, 3) * p3;  
-};  
+/**
+     * @desc 三阶贝塞尔
+     * @param {number} t 当前百分比
+     * @param {Array} p1 起点坐标
+     * @param {Array} p2 终点坐标
+     * @param {Array} cp1 控制点1
+     * @param {Array} cp2 控制点2
+     */
+export const cubicBezier = (t:number, p1:number[]= [0,0], cp1:number[], cp2:number[],p2:number[]= [1,1])=> {
+  const [x1, y1] = p1;
+  const [x2, y2] = p2;
+  const [cx1, cy1] = cp1;
+  const [cx2, cy2] = cp2;
+  let x =
+      x1 * (1 - t) * (1 - t) * (1 - t) +
+      3 * cx1 * t * (1 - t) * (1 - t) +
+      3 * cx2 * t * t * (1 - t) +
+      x2 * t * t * t;
+  let y =
+      y1 * (1 - t) * (1 - t) * (1 - t) +
+      3 * cy1 * t * (1 - t) * (1 - t) +
+      3 * cy2 * t * t * (1 - t) +
+      y2 * t * t * t;
+  return y;
+}

@@ -26,7 +26,6 @@ export const generate = (color: string, options: GenerateOptions = {}) => {
         for (let i = 1; i <= 10; i++) {  
             colors.push(func(color, i, format));  
         }  
-        console.log(colors);
         
         return colors;  
     }  
