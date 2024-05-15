@@ -1,34 +1,36 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { onMounted } from '@vue/runtime-core'
-// import { generate } from 'ued-xxxxxxxxx'
-
+import lineEcharts from './echarts.vue'
 import { generate } from '../src'
 
 onMounted(() => {
   colors1.value = generate(primaryColor1.value, { colorArray: true, dark: false })
-  colors2.value = generate(primaryColor2.value, { colorArray: true, dark: false })
-  colors3.value = generate(primaryColor3.value, { colorArray: true, dark: false })
-  colors4.value = generate(primaryColor4.value, { colorArray: true, dark: false })
 })
 
 const primaryColor1 = ref<string>('#3E51AD')
-const primaryColor2 = ref<string>('#3EADA9')
-const primaryColor3 = ref<string>('#913ead')
-const primaryColor4 = ref<string>('#2477F2')
+
 
 let colors1 = ref<string[]>([])
-let colors2 = ref<string[]>([])
-let colors3 = ref<string[]>([])
-let colors4 = ref<string[]>([])
+let Hdata = ref<number[]>([229, 228, 228, 229, 230, 230, 229, 230, 231, 233 ])
+let Sdata = ref<number[]>([11, 22, 33, 45, 56, 64, 69, 74, 78, 80])
+let Vdata = ref<number[]>([99, 98, 95, 88,  80, 68, 56, 45, 32, 20])
 
 // const onChange = (color: string) => {
 //   colors.value = generate(color);
 // }
+
 </script>
 
 <template>
   <div class="examples">
+    <div class="echarts-container flex-row">
+      <line-echarts :LineName="'H'" :data="Hdata" />
+
+      <line-echarts :LineName="'S'" :data="Sdata" />
+
+      <line-echarts :LineName="'V'" :data="Vdata" />
+    </div>
     <div class="flex-row box">
       <div class="colors">
         <div class="wrapper">
@@ -38,37 +40,13 @@ let colors4 = ref<string[]>([])
           <div class="colors-item" :style="{ backgroundColor: item }">{{ item }}</div>
         </template>
       </div>
-      <div class="colors">
-        <div class="wrapper">
-          <div class="primary-color">主色: {{ primaryColor2 }}</div>
-        </div>
-        <template v-for="(item, index) of colors2" :key="index">
-          <div class="colors-item" :style="{ backgroundColor: item }">{{ item }}</div>
-        </template>
-      </div>
-      <div class="colors">
-        <div class="wrapper">
-          <div class="primary-color">主色: {{ primaryColor3 }}</div>
-        </div>
-        <template v-for="(item, index) of colors3" :key="index">
-          <div class="colors-item" :style="{ backgroundColor: item }">{{ item }}</div>
-        </template>
-      </div>
-      <div class="colors">
-        <div class="wrapper">
-          <div class="primary-color">主色: {{ primaryColor4 }}</div>
-        </div>
-        <template v-for="(item, index) of colors4" :key="index">
-          <div class="colors-item" :style="{ backgroundColor: item }">{{ item }}</div>
-        </template>
-      </div>
     </div>
   </div>
 </template>
 
 
 
-<style scoped >
+<style scoped lang="less">
 .examples {
   width: 100%;
   height: 100%;
@@ -76,8 +54,21 @@ let colors4 = ref<string[]>([])
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: cubic-bezier(0, 0.5, 0.5, 1);
+  transition: cubic-bezier(0.5, 0, 1, 0.5);
 }
+
+.echarts-container {
+  height: 500px;
+  width: 100%;
+  display: flex;
+  gap: 50px;
+
+  .main {
+    flex: 1;
+    width: 33.33%;
+  }
+}
+
 .wrapper {
   display: flex;
   align-items: center;

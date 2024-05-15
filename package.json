@@ -36,8 +36,8 @@
   ],
   "dependencies": {
     "color": "^4.2.3",
-    "tinycolor2": "^1.4.2",
-    "ued-xxxxxxxxx": "^0.1.0"
+    "echarts": "^5.5.0",
+    "tinycolor2": "^1.4.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
@@ -51,6 +51,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
     "javascript-obfuscator": "^4.1.0",
+    "less": "^4.2.0",
     "npm-run-all2": "^6.1.2",
     "prettier": "^3.2.5",
     "rollup-plugin-obfuscator": "^1.1.0",

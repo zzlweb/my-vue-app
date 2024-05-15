@@ -14,8 +14,4 @@ https://www.cnblogs.com/arxive/p/7008460.html
 
 //archo system
 https://github.com/arco-design/color/blob/main/src/palette-dark.js
-
-
-1. 模型介绍
-2. 竞品分析
-3. 推陈出新
+ 

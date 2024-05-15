@@ -28,7 +28,6 @@ export const lightPalette = (color:string, index: number, format: string) => {
             // 1-10色相变化 => 色相从小到大 => 色相逆时针旋转 => 更冷
             Hue = ispre ? h + hS * index : h - hS * index
         }
-        
         if (Hue < 0) {
             Hue += 360;
           } else if (Hue >= 360) {
@@ -37,7 +36,7 @@ export const lightPalette = (color:string, index: number, format: string) => {
           return Math.round(Hue);
     }
 
-    const getSue = (ispre: boolean , index:number) => {
+    const getSue = (ispre: boolean , index:number, defaultIndex?: number) => {
         let Sue
         if (ispre) {
             Sue = s <= minS ? s : s - ((s - minS) / 5) * index;
@@ -51,17 +50,17 @@ export const lightPalette = (color:string, index: number, format: string) => {
 
     const getVue  = (ispre: boolean , index:number) => {
         const tPrime1 = cubicBezier(index / 10 ,[0,0],[0,1],[1,0],[1,1])
-        return ispre ? (v> maxV ? maxV : (v + ((maxV - v) / 5) * index * 2.5 *(tPrime1)) ) : (v <= minV ? minV : (v - ((v - minV) / 5) * index * 1.25  ) + Math.sin(index * Math.PI/2));
+        const V =  ispre ? (v> maxV ? maxV : (v + ((maxV - v) / 5) * index * 2.5 *(tPrime1)) ) : (v <= minV ? minV : (v - ((v - minV) / 5) * index * 1.25  ) + Math.sin(index * Math.PI/2));
+        return V
       }
 
     const ispre = index < 6 
     const calcIndex = ispre ? 6 - index : index - 6;
-
     const retColor = index === 6
         ? hsvbaseColor
         : Color({
             h: getHue(ispre, calcIndex),
-            s: getSue(ispre, calcIndex),
+            s: getSue(ispre, calcIndex, index),
             v: getVue(ispre, calcIndex),
         });
     // 将hsv 转换为 
