@@ -1,6 +1,7 @@
 import  Color from 'color'
 import { hS ,maxS, minS, maxV, minV } from './defaultSetting'
 import { getColorString, cubicBezier  } from './utils'
+
 export const lightPalette = (color:string, index: number, format: string) => {
     // 将color 转换为hsv
     const baseColor = Color(color);
@@ -11,7 +12,7 @@ export const lightPalette = (color:string, index: number, format: string) => {
 
     // h [60 - 240 ] 为暖色调 其他为冷色调
 
-    const getHue = (ispre: boolean , index:number ) => {
+    const getHue = (ispre: boolean , index:number, defaultIndex?:index ) => {
         // 使用cubic Bézier曲线生成一个介于0和1之间的t'值 
         // const tPrime = cubicBezier(index / 10 , 0, 0.5, 0.5, 1)
         // 进行色相调整
@@ -48,7 +49,7 @@ export const lightPalette = (color:string, index: number, format: string) => {
         return Sue;
     }
 
-    const getVue  = (ispre: boolean , index:number) => {
+    const getVue  = (ispre: boolean , index:number,  defaultIndex?: number) => {
         const tPrime1 = cubicBezier(index / 10 ,[0,0],[0,1],[1,0],[1,1])
         const V =  ispre ? (v> maxV ? maxV : (v + ((maxV - v) / 5) * index * 2.5 *(tPrime1)) ) : (v <= minV ? minV : (v - ((v - minV) / 5) * index * 1.25  ) + Math.sin(index * Math.PI/2));
         return V
@@ -59,9 +60,9 @@ export const lightPalette = (color:string, index: number, format: string) => {
     const retColor = index === 6
         ? hsvbaseColor
         : Color({
-            h: getHue(ispre, calcIndex),
+            h: getHue(ispre, calcIndex, index),
             s: getSue(ispre, calcIndex, index),
-            v: getVue(ispre, calcIndex),
+            v: getVue(ispre, calcIndex, index),
         });
     // 将hsv 转换为 
     // return retColor

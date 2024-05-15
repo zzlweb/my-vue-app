@@ -13,7 +13,7 @@ const primaryColor1 = ref<string>('#3E51AD')
 
 let colors1 = ref<string[]>([])
 let Hdata = ref<number[]>([229, 228, 228, 229, 230, 230, 229, 230, 231, 233 ])
-let Sdata = ref<number[]>([11, 22, 33, 45, 56, 64, 69, 74, 78, 80])
+let Sdata = ref<number[]>([1.1, 2.2, 3.3, 4.5, 5.6, 6.4, 6.9, 7.4, 7.8, 8.0])
 let Vdata = ref<number[]>([99, 98, 95, 88,  80, 68, 56, 45, 32, 20])
 
 // const onChange = (color: string) => {
