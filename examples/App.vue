@@ -29,15 +29,14 @@ let Vdata1 = ref<number[]>([])
 
 const onChange = (color: string) => {
   colors1.value = generate(color, { colorArray: true, dark: false })
-  Hdata1.value = []
-  Sdata1.value = []
-  Vdata1.value = []
-  colors1.value.map((item) => {
-    Hdata1.value.push(item.hue())
-    Sdata1.value.push(item.saturationv())
-    Vdata1.value.push(item.value())
-  })
+  // console.log(colors1.value);
+  
+  Hdata1.value = colors1.value.map(item => item.hue())
+  Sdata1.value = colors1.value.map(item => item.saturationv())
+  Vdata1.value = colors1.value.map(item => item.value())
 
+  console.log(Vdata1.value);
+  
 }
 
 const colorHex = (data: any) => {
