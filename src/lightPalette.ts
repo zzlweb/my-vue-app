@@ -22,8 +22,9 @@ export const lightPalette = (color:string, index: number, format: string) => {
             // 主色为暖色调
             // 1-10色相变化 => 色相从大到小 => 色相顺时针旋转 => 更暖
             // index < 6 色相曲线调节
-            const tPrime1= cubicBezier(index/ 5 ,  [0,0],[0.5, 0],[1,0.5],[1,1])
-            Hue = ispre ? h - Math.min(hS * Math.sin((index - 1 ) * Math.PI / 4)* 2 , 1) : h +  hS * tPrime1 * 5
+            // const tPrime1= cubicBezier(index/ 5 ,  [0,0],[0.5, 0],[1,0.5],[1,1])
+            // Hue = ispre ? h - Math.min(hS * Math.sin((index - 1 ) * Math.PI / 4)* 2 , 1) : h +  hS * tPrime1 * 5
+            return h
         } else {
             // 冷色系
             // 1-10色相变化 => 色相从小到大 => 色相逆时针旋转 => 更冷
@@ -51,7 +52,8 @@ export const lightPalette = (color:string, index: number, format: string) => {
 
     const getVue  = (ispre: boolean , index:number,  defaultIndex?: number) => {
         const tPrime1 = cubicBezier(index / 10 ,[0,0],[0,1],[1,0],[1,1])
-        const V =  ispre ? (v> maxV ? maxV : (v + ((maxV - v) / 5) * index * 2.5 *(tPrime1)) ) : (v <= minV ? minV : (v - ((v - minV) / 5) * index * 1.25  ) + Math.sin(index * Math.PI/2));
+        // 1 3 7 8 12
+        const V =  ispre ? (v > maxV ? maxV : (v + index * 4 + ((maxV - v))  * (tPrime1)) ) : (v <= minV ? minV : (v - ((v - minV) / 5) * index * 1.25  ) + Math.sin(index * Math.PI/2));
         return V
       }
 
@@ -65,7 +67,7 @@ export const lightPalette = (color:string, index: number, format: string) => {
             v: getVue(ispre, calcIndex, index),
         });
     // 将hsv 转换为 
-    // return retColor
+    return retColor
     return getColorString(retColor, format);
     
 }

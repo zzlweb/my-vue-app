@@ -49,7 +49,7 @@ export default defineConfig({
       fileName: (format) => `ued-color.${format}.js`,
     },
     rollupOptions: {
-      external: ['vue', 'echarts', 'less'],
+      external: ['vue', 'echarts', 'less', '@ans1998/vue3-color'],
       output: {
         // UedColor: 'UedColor',
       },

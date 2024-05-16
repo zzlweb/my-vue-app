@@ -40,6 +40,7 @@
     "tinycolor2": "^1.4.2"
   },
   "devDependencies": {
+    "@ans1998/vue3-color": "^3.0.7",
     "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/color": "^3.0.6",
