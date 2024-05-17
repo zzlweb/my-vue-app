@@ -1,4 +1,5 @@
 import Color from 'color'
+import * as math from 'mathjs'
 
 // export const getRgbStr = function(color: String) {
 //   return Color(color)
@@ -39,15 +40,26 @@ export const cubicBezier = (t:number, p1:number[]= [0,0], cp1:number[], cp2:numb
   const [x2, y2] = p2;
   const [cx1, cy1] = cp1;
   const [cx2, cy2] = cp2;
-  let x =
+  const x =
       x1 * (1 - t) * (1 - t) * (1 - t) +
       3 * cx1 * t * (1 - t) * (1 - t) +
       3 * cx2 * t * t * (1 - t) +
       x2 * t * t * t;
-  let y =
+  const y =
       y1 * (1 - t) * (1 - t) * (1 - t) +
       3 * cy1 * t * (1 - t) * (1 - t) +
       3 * cy2 * t * t * (1 - t) +
       y2 * t * t * t;
   return y;
 }
+
+export const polynomialFit = (x: number[], y: number[], degree: number) => {    
+    let X = [];    
+    for (let i = 0; i <= degree; i++) {    
+        X.push(x.map(val => Math.pow(val, i)));    
+    }    
+    X = math.transpose(X);    
+    const Y = y;    
+    const coefficients = math.multiply(math.inv(math.multiply(math.transpose(X), X)), math.multiply(math.transpose(X), Y));    
+    return coefficients;    
+} 
