@@ -39,9 +39,9 @@ export default defineConfig({
     //   }
     // })
   ],
-  // esbuild: {
-  //   drop: ['console', 'debugger'],//打包去除
-  // },
+  esbuild: {
+    drop: ['console', 'debugger'],//打包去除
+  },
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
