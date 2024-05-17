@@ -1,5 +1,5 @@
-import { baseSueList, baseVueList  } from './defaultSetting'
-import { polynomialFit  } from './utils'
+import { baseSueList, baseVueList, NUM_POINTS } from './defaultSetting'
+import { polynomialFit } from './utils'
 
 // 拟合曲线
 const getPoly = (
@@ -7,11 +7,11 @@ const getPoly = (
   baseVue: number[] = baseVueList,
   degree: number = 3
 ) => {
-  const indexs = Array.from({ length: 10 }, (_, i) => i + 1)
+  const indexs = Array.from({ length: NUM_POINTS }, (_, i) => i + 1)
+  const polyH = polynomialFit(indexs, baseHue, degree)
   const polyS = polynomialFit(indexs, baseSue, degree)
   const polyV = polynomialFit(indexs, baseVue, degree)
-  console.log(polyS);
-  
+
   return {
     polyS,
     polyV

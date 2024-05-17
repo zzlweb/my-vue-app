@@ -1,14 +1,11 @@
 import  Color from 'color'
 import { baseHueList } from './defaultSetting'
 import { getHSVList } from './colorCurve'
-import { e } from 'mathjs';
-
-
 
 export const lightPalette = (color:string, index: number) => {
     // 将color 转换为hsv
     const baseColor = Color(color);
-    const hsvbaseColor = Color(color).hsv()
+    const HsvBaseColor = Color(color).hsv()
     const h = baseColor.hue(); 
     const s = baseColor.saturationv();
     const v = baseColor.value()
@@ -33,13 +30,16 @@ export const lightPalette = (color:string, index: number) => {
         return (lineHSV.lineVue[nowIndex-1] - lineHSV.lineVue[5]) / lineHSV.lineVue[5] * v + v 
     }
 
+    const isPre = index < 6 
+    const calcIndex = isPre ? 6 - index : index - 6;
     const retColor = index === 6
-        ? hsvbaseColor
+        ? HsvBaseColor
         : Color({
             h: getHue(index),
             s: getSue(index),
             v: getVue(index),
         });
-    // 将hsv 转换为 
     return retColor
+    // 16进制
+    // return getColorString(retColor, format);
 }
