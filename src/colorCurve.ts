@@ -1,21 +1,18 @@
-import { baseHueList, baseSueList, baseVueList  } from './defaultSetting'
+import { baseSueList, baseVueList  } from './defaultSetting'
 import { polynomialFit  } from './utils'
 
 // 拟合曲线
 const getPoly = (
-  baseHue: number[] = baseHueList,
   baseSue: number[] = baseSueList,
   baseVue: number[] = baseVueList,
   degree: number = 3
 ) => {
   const indexs = Array.from({ length: 10 }, (_, i) => i + 1)
-  const polyH = polynomialFit(indexs, baseHue, degree)
   const polyS = polynomialFit(indexs, baseSue, degree)
   const polyV = polynomialFit(indexs, baseVue, degree)
   console.log(polyS);
   
   return {
-    polyH,
     polyS,
     polyV
   }
@@ -25,16 +22,9 @@ const getPoly = (
 export const getHSVList = () => {
   const ploy = getPoly()
   const indexs = Array.from({ length: 10 }, (_, i) => i + 1)
-  const lineHue: number[] = [];
   const lineSue: number[] = [];
   const lineVue: number[] = [];
   indexs.forEach((x) => {
-    let HValue: number = 0
-    ploy.polyH.map((item, i) => {
-      HValue += item * Math.pow(x, i)
-    })
-    lineHue.push(HValue)
-
     let SValue: number = 0
     ploy.polyS.map((item, i) => {
       SValue += item * Math.pow(x, i)
@@ -48,7 +38,6 @@ export const getHSVList = () => {
     lineVue.push(VValue)
   })
   return {
-    lineHue,
     lineSue,
     lineVue
   }
