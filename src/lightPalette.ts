@@ -12,7 +12,7 @@ export const lightPalette = (color:string, index: number, format: string) => {
 
     // h [60 - 240 ] 为暖色调 其他为冷色调
 
-    const getHue = (ispre: boolean , index:number, defaultIndex?:index ) => {
+    const getHue = (ispre: boolean , index:number, defaultIndex?:number ) => {
         let Hue 
         // 如果是暖色系
         if( h >= 60 || h <= 240) {
