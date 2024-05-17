@@ -8,7 +8,6 @@ const getPoly = (
   degree: number = 3
 ) => {
   const indexs = Array.from({ length: NUM_POINTS }, (_, i) => i + 1)
-  const polyH = polynomialFit(indexs, baseHue, degree)
   const polyS = polynomialFit(indexs, baseSue, degree)
   const polyV = polynomialFit(indexs, baseVue, degree)
 
@@ -19,9 +18,12 @@ const getPoly = (
 }
 
 // 获取曲线上的色板值
-export const getHSVList = () => {
-  const ploy = getPoly()
-  const indexs = Array.from({ length: 10 }, (_, i) => i + 1)
+export const getHSVList = (
+  baseSue: number[] = baseSueList,
+  baseVue: number[] = baseVueList,
+  degree: number = 3) => {
+  const ploy = getPoly(baseSue, baseVue, degree)
+  const indexs = Array.from({ length: NUM_POINTS }, (_, i) => i + 1)
   const lineSue: number[] = [];
   const lineVue: number[] = [];
   indexs.forEach((x) => {

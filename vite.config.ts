@@ -7,37 +7,37 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [
     vue(),
-    // obfuscator({
-    //   global:false,
-    //   options: {
-    //     compact: true,
-	  //     controlFlowFlattening: true,
-	  //     deadCodeInjection: true,
-	  //     debugProtection: true,
-	  //     debugProtectionInterval: 0,
-	  //     disableConsoleOutput: false,
-	  //     identifierNamesGenerator: "hexadecimal",
-	  //     log: false,
-	  //     numbersToExpressions: false,
-	  //     renameGlobals: false,
-	  //     selfDefending: false,
-	  //     simplify: true,
-	  //     splitStrings: false,
-	  //     stringArray: true,
-	  //     stringArrayCallsTransform: false,
-	  //     stringArrayCallsTransformThreshold: 0.5,
-	  //     stringArrayEncoding: [],
-	  //     stringArrayIndexShift: true,
-	  //     stringArrayRotate: true,
-	  //     stringArrayShuffle: true,
-	  //     stringArrayWrappersCount: 1,
-	  //     stringArrayWrappersChainedCalls: true,
-	  //     stringArrayWrappersParametersMaxCount: 2,
-	  //     stringArrayWrappersType: "variable",
-	  //     stringArrayThreshold: 0.75,
-	  //     unicodeEscapeSequence: false,
-    //   }
-    // })
+    obfuscator({
+      global:false,
+      options: {
+        compact: true,
+	      controlFlowFlattening: true,
+	      deadCodeInjection: true,
+	      debugProtection: true,
+	      debugProtectionInterval: 0,
+	      disableConsoleOutput: false,
+	      identifierNamesGenerator: "hexadecimal",
+	      log: false,
+	      numbersToExpressions: false,
+	      renameGlobals: false,
+	      selfDefending: false,
+	      simplify: true,
+	      splitStrings: false,
+	      stringArray: true,
+	      stringArrayCallsTransform: false,
+	      stringArrayCallsTransformThreshold: 0.5,
+	      stringArrayEncoding: [],
+	      stringArrayIndexShift: true,
+	      stringArrayRotate: true,
+	      stringArrayShuffle: true,
+	      stringArrayWrappersCount: 1,
+	      stringArrayWrappersChainedCalls: true,
+	      stringArrayWrappersParametersMaxCount: 2,
+	      stringArrayWrappersType: "variable",
+	      stringArrayThreshold: 0.75,
+	      unicodeEscapeSequence: false,
+      }
+    })
   ],
   esbuild: {
     drop: ['console', 'debugger'],//打包去除

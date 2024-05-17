@@ -1,5 +1,4 @@
-export declare const getHSVList: (baseHue?: number[], baseSue?: number[], baseVue?: number[], degree?: number) => {
-    lineHue: number[];
+export declare const getHSVList: (baseSue?: number[], baseVue?: number[], degree?: number) => {
     lineSue: number[];
     lineVue: number[];
 };

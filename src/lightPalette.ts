@@ -2,7 +2,7 @@ import  Color from 'color'
 import { baseHueList } from './defaultSetting'
 import { getHSVList } from './colorCurve'
 
-export const lightPalette = (color:string, index: number) => {
+export const lightPalette = (color:string, index: number, format:'hex' | 'rgb' | 'hsl') => {
     // 将color 转换为hsv
     const baseColor = Color(color);
     const HsvBaseColor = Color(color).hsv()
@@ -30,8 +30,6 @@ export const lightPalette = (color:string, index: number) => {
         return (lineHSV.lineVue[nowIndex-1] - lineHSV.lineVue[5]) / lineHSV.lineVue[5] * v + v 
     }
 
-    const isPre = index < 6 
-    const calcIndex = isPre ? 6 - index : index - 6;
     const retColor = index === 6
         ? HsvBaseColor
         : Color({
