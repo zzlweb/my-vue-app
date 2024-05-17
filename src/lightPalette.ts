@@ -13,9 +13,6 @@ export const lightPalette = (color:string, index: number, format: string) => {
     // h [60 - 240 ] 为暖色调 其他为冷色调
 
     const getHue = (ispre: boolean , index:number, defaultIndex?:index ) => {
-        // 使用cubic Bézier曲线生成一个介于0和1之间的t'值 
-        // const tPrime = cubicBezier(index / 10 , 0, 0.5, 0.5, 1)
-        // 进行色相调整
         let Hue 
         // 如果是暖色系
         if( h >= 60 || h <= 240) {
@@ -39,22 +36,15 @@ export const lightPalette = (color:string, index: number, format: string) => {
     }
 
     const getSue = (ispre: boolean , index:number, defaultIndex?: number) => {
-        let Sue
-        if (ispre) {
-            Sue = s <= minS ? s : s - ((s - minS) / 5) * index;
-          } else {
-            // index > 6 饱和度曲线调节  5 4 4 2
-            const tPrime = cubicBezier(index / 5 ,[0,0],[0.05,0.5],[0.5,0.95],[1,1])
-            Sue = s + ((maxS - s) / 5) * tPrime * 3.5
-          }
-        return Sue;
+        const TValue = (-0.031*Math.pow(defaultIndex, 3) - 0.177*Math.pow(defaultIndex,2) + 13.11*defaultIndex  - 2.633 )  
+        const ds6 = (-0.031*Math.pow(6, 3) - 0.177*Math.pow(6,2) + 13.11*6  - 2.633 )
+        return (TValue - ds6) / ds6 * s + s 
     }
 
     const getVue  = (ispre: boolean , index:number,  defaultIndex?: number) => {
-        const tPrime1 = cubicBezier(index / 10 ,[0,0],[0,1],[1,0],[1,1])
-        // 1 3 7 8 12
-        const V =  ispre ? (v > maxV ? maxV : (v + index * 4 + ((maxV - v))  * (tPrime1)) ) : (v <= minV ? minV : (v - ((v - minV) / 5) * index * 1.25  ) + Math.sin(index * Math.PI/2));
-        return V
+        const TSvalue = (-0.0002914*Math.pow(defaultIndex, 4) + 0.102*Math.pow(defaultIndex,3) - 2.344*Math.pow(defaultIndex, 2) + 6.039*defaultIndex + 95 )  
+        const dv6 = (-0.0002914*Math.pow(6, 4) + 0.102*Math.pow(6,3) - 2.344*Math.pow(6, 2) + 6.039*6 + 95 )  
+        return (TSvalue - dv6) / dv6 * v + v 
       }
 
     const ispre = index < 6 

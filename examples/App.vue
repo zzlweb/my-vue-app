@@ -14,8 +14,8 @@ onMounted(() => {
   })
 })
 
-// const primaryColor1 = ref<string>('#3e51ad')
-const primaryColor1 = ref<string>('#E43CD3')
+const primaryColor1 = ref<string>('#3e51ad')
+// const primaryColor1 = ref<string>('#E43CD3')
 const showSketch = ref<boolean>(true)
 
 let colors1 = ref<string[]>([])
