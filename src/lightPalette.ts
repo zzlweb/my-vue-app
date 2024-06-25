@@ -1,8 +1,9 @@
 import  Color from 'color'
 import { baseHueList } from './defaultSetting'
 import { getHSVList } from './colorCurve'
-
-export const lightPalette = (color:string, index: number, format:'hex' | 'rgb' | 'hsl') => {
+import { getColorString } from './utils';    
+    
+export const lightPalette = (color:string, index: number, format:string) => {
     // 将color 转换为hsv
     const baseColor = Color(color);
     const HsvBaseColor = Color(color).hsv()
@@ -37,7 +38,7 @@ export const lightPalette = (color:string, index: number, format:'hex' | 'rgb' |
             s: getSue(index),
             v: getVue(index),
         });
-    return retColor
+    // return retColor
     // 16进制
-    // return getColorString(retColor, format);
+    return getColorString(retColor, format);
 }

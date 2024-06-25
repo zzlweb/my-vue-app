@@ -1,4 +1,3 @@
-/// <reference types="color" />
 interface GenerateOptions {
     index?: number;
     dark?: boolean;
@@ -12,29 +11,5 @@ interface GenerateOptions {
  * @param options 选项
  * @returns 单一颜色字符串或颜色字符串数组
  */
-export declare const generate: (color: string, options?: GenerateOptions) => any[] | import("color")<string | number | import("color")<string | number | import("color")<string | number | import("color")<string | number | import("color")<string | number | import("color")<string | number | import("color")<string | number | import("color")<string | number | import("color")<string | number | import("color")<string | number | import("color")<string | number | import("color")<string | number | any | ArrayLike<number> | {
-    [key: string]: any;
-}> | ArrayLike<number> | {
-    [key: string]: any;
-}> | ArrayLike<number> | {
-    [key: string]: any;
-}> | ArrayLike<number> | {
-    [key: string]: any;
-}> | ArrayLike<number> | {
-    [key: string]: any;
-}> | ArrayLike<number> | {
-    [key: string]: any;
-}> | ArrayLike<number> | {
-    [key: string]: any;
-}> | ArrayLike<number> | {
-    [key: string]: any;
-}> | ArrayLike<number> | {
-    [key: string]: any;
-}> | ArrayLike<number> | {
-    [key: string]: any;
-}> | ArrayLike<number> | {
-    [key: string]: any;
-}> | ArrayLike<number> | {
-    [key: string]: any;
-}>;
+export declare const generate: (color: string, options?: GenerateOptions) => any;
 export {};

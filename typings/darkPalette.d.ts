@@ -1,1 +1,1 @@
-export declare const darkPalette: (originColor: string, i: number, format: string) => never[];
+export declare const darkPalette: (originColor: string, i: number, format: string) => any;

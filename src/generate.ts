@@ -20,8 +20,7 @@ export const generate = (color: string, options: GenerateOptions = {}) => {
     const { dark = false, colorArray = false, index = 6, format = 'hex' } = options;  
     // 如果需要颜色数组  
     if (colorArray) {  
-        // --- 注意这里类型要修改
-        const colors: any[] = []; // 使用明确的类型注解  
+        const colors: String[] = []; // 使用明确的类型注解  
         const func = dark ? darkPalette : lightPalette;  
         for (let i = 1; i <= 10; i++) {  
             colors.push(func(color, i, format));  
