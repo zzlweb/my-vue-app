@@ -69,7 +69,8 @@ const handelTemplate = (data:string) => {
 
 <template>
   <div class="page">
-    <div class="header">
+    <div class="header" :style="{color: `${primaryColor}`}">
+      UED Design Theme
     </div>
     <div class="examples">
       <div class="box">
@@ -135,6 +136,14 @@ const handelTemplate = (data:string) => {
   background: url('./assets/bg.png');
   background-size: cover;
   object-fit: cover;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 150px;
+  // background: linear-gradient(260deg, #3d67ff 0%, #9773ff 50%, #efceff 80%), #fff;
+  // -webkit-text-fill-color: transparent;
+  // -webkit-background-clip: text;
+  // background-clip: text;
 }
 
 .box {
